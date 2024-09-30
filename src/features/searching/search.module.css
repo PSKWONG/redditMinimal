@@ -1,0 +1,28 @@
+
+form{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.searchingBtn{
+    background-image: url(../../../public/media/image/searching.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display:inline-flexbox;
+}
+
+.inputTextBox {
+    padding: 5px;
+    border-radius: 3px;
+    outline: none;
+    outline-color: transparent;
+    outline-width: 0px;
+    border: 1px solid #847E89;
+    color: #847E89;
+}
