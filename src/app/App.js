@@ -1,0 +1,31 @@
+////////////////////////////Importing//////////////////////
+
+//------------------------Import External Componenet ----------------------
+import React from 'react';
+import { RouterProvider, createBrowserRouter, Route, createRoutesFromElements } from 'react-router-dom';
+//------------------------Import Internal Componenet ----------------------
+import './App.css';
+import { Root } from '../component/root/root.js';
+
+////////////////////////////Routing//////////////////////
+const appRouter = createBrowserRouter(createRoutesFromElements(
+  <Route
+    path="/"
+    element={
+      <Root />
+    }
+  >
+
+
+  </Route>
+));
+
+
+
+function App() {
+  return (
+    <RouterProvider router={appRouter} />
+  );
+}
+
+export default App;

@@ -1,0 +1,35 @@
+.headerwrapper{
+    --cornerRadis: 15px;
+}
+
+.headerwrapper {
+    background-color: #F4F1DE;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    -webkit-border-bottom-right-radius: var(--cornerRadis);
+    -webkit-border-bottom-left-radius: var(--cornerRadis);
+    border-bottom-right-radius: var(--cornerRadis);
+    border-bottom-left-radius: var(--cornerRadis);
+    box-shadow: 0px 8px rgba(136,136,136, 0.53);
+}
+.firstRow {
+    min-height: 30px;
+    display: flex;
+
+}
+.logoBtn {
+    background-image: url("../../../public/media/image/redditlogo.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size:contain;
+    padding-left: 70px;
+    line-height: 70px;
+    min-width: 70px;
+    display: block;
+}
+
+.RedditTitle{
+    font-weight: 700;
+    color: #FF6542;
+}
