@@ -1,22 +1,66 @@
 ////////////////////////////Importing//////////////////////
 
 //------------------------Import External Componenet ----------------------
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 //------------------------Import Internal Componenet ----------------------
 
-const searchingSlice = createSlice({
-    name:'searching',
-    initialState:{
-        keyword:"Search relevant post(s) ",
-    },
-    reducers:{
-        changeSearchingKeyword:(state,action)=>{
-            state.keyword = action.payload
-        }
+
+
+
+export const fetchPostbyTerm = createAsyncThunk(
+    'searching/fetchPostbyTerm',
+    async (terms, thunkAPI) => {
+        
+        const fetchURL = `https://www.reddit.com/search.json?q=${terms}`;
+        const response = await fetch(fetchURL);        
+        const json = await response.json();
+        return json.data;
     }
+)
+
+
+
+
+const searchingSlice = createSlice({
+    name: 'searching',
+    initialState: {
+        keyword: "Search relevant post(s) ",
+        searchResult: {},
+        isLoading: false,
+        hasError: false,
+    },
+    reducers: {
+        changeSearchingKeyword: (state, action) => {
+            state.keyword = action.payload
+        },
+        
+    },
+    
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchPostbyTerm.pending, (state) => {
+                state.isLoading = true;
+                state.hasError = false;
+            })
+            .addCase(fetchPostbyTerm.rejected, (state) => {
+                state.isLoading = false;
+                state.hasError = true;
+
+            })
+            .addCase(fetchPostbyTerm.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.hasError = false;
+                const { children } = action.payload
+                state.searchResult = children
+            })
+    },
+    
 });
 
-export const selectSearchingterms = (state)=>state.searching.keyword;
-export const {changeSearchingKeyword} = searchingSlice.actions;
+export const selectSearchingterms = (state) => state.searching.keyword;
+export const selectSearchingLoading = (state) => state.searching.isLoading;
+export const selectSearchingError = (state) => state.searching.hasError;
+
+export const { changeSearchingKeyword } = searchingSlice.actions;
 export default searchingSlice.reducer;
 
