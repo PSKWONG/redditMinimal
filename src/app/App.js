@@ -6,16 +6,12 @@ import { RouterProvider, createBrowserRouter, Route, createRoutesFromElements } 
 //------------------------Import Internal Componenet ----------------------
 import './App.css';
 import { Root } from '../component/root/root.js';
+import { PostWrapper } from '../features/post/postWrapper.js';
 
 ////////////////////////////Routing//////////////////////
 const appRouter = createBrowserRouter(createRoutesFromElements(
-  <Route
-    path="/"
-    element={
-      <Root />
-    }
-  >
-
+  <Route path="/" element={<Root />} >
+    <Route index element = {<PostWrapper />} />
 
   </Route>
 ));

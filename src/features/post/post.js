@@ -1,14 +1,14 @@
 ////////////////////////////Importing//////////////////////
 
 //------------------------Import External Componenet ----------------------
-import React from "react";
 //------------------------Import Internal Componenet ----------------------
 import style from './post.module.css'
 import { VideoPlayer } from "../../component/mediaPlayer/videoPlayer";
 import { ThumbnailContainer } from "../../component/mediaPlayer/thumbnail";
 
+
 export function Post(props) {
-    const { title, media, over_18, is_video, author, created , num_comments, thumbnail} = props.data
+    const { title, media, over_18, is_video, author, created, num_comments, thumbnail } = props.data
 
     const mediaInfo = {
         is_video,
@@ -17,8 +17,8 @@ export function Post(props) {
     }
 
     const timeCount = () => {
-        let currentDate = Date.now()/1000
-        
+        let currentDate = Date.now() / 1000
+
         let time = currentDate - created
 
         console.log(time)
@@ -41,17 +41,16 @@ export function Post(props) {
 
 
 
-    
 
     if (over_18 === false) {
         return (
             <div className={style.poscontainer}>
                 <ThumbnailContainer mediaInfo={mediaInfo} />
                 <h2> {title} </h2>
-                
+
                 <VideoPlayer mediaInfo={mediaInfo} />
                 <div className={style.extradata}>
-                    Posted by <strong> {author} </strong> 
+                    Posted by <strong> {author} </strong>
                     <span className={style.divider}> &#8226;</span>
                     {timeCount()} ago
                     <span className={style.divider}> &#8226;</span>

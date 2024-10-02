@@ -1,10 +1,23 @@
 ////////////////////////////Importing//////////////////////
 
 //------------------------Import External Componenet ----------------------
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 //------------------------Import Internal Componenet ----------------------
 import { fetchPostbyTerm } from "../searching/searchSlice";
+
+export const fetchPages = createAsyncThunk(
+    'post/fetchPages',
+    async(subreddit, thunkAPI)=>{
+        const fetchURL = `https://www.reddit.com/r/${subreddit}/.json`;
+        const response = await fetch(fetchURL);
+        
+        const json = await response.json();
+        console.log(json)
+        return json.data; 
+    }
+)
+
 
 
 const postSlice = createSlice({
@@ -19,10 +32,11 @@ const postSlice = createSlice({
         hasError: false,
     },
     reducers: {
-        changePage: (state, action) => {
+        changePostList: (state, action) => {
             const { name, icon } = action.payload;
             state.pageInfo.pageName = name;
             state.pageInfo.pageIcon = icon;
+            fetchPages(name);
         },
     },
     extraReducers: (builder) => {
@@ -41,6 +55,20 @@ const postSlice = createSlice({
                 const { children } = action.payload
                 state.pagePost = children
                 state.pageInfo.pageName = 'Searching'
+            })
+            .addCase(fetchPages.pending, (state) => {
+                state.isLoading = true;
+                state.hasError = false;
+            })
+            .addCase(fetchPages.rejected, (state) => {
+                state.isLoading = false;
+                state.hasError = true;
+            })
+            .addCase(fetchPages.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.hasError = false;
+                const { children } = action.payload
+                state.pagePost = children
             })
     },
     selectors: {
