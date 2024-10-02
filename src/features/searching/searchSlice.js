@@ -25,7 +25,7 @@ const searchingSlice = createSlice({
     name: 'searching',
     initialState: {
         keyword: "Search relevant post(s) ",
-        searchResult: {},
+        //searchResult: {},
         isLoading: false,
         hasError: false,
     },
@@ -45,21 +45,16 @@ const searchingSlice = createSlice({
             .addCase(fetchPostbyTerm.rejected, (state) => {
                 state.isLoading = false;
                 state.hasError = true;
-
             })
             .addCase(fetchPostbyTerm.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.hasError = false;
-                const { children } = action.payload
-                state.searchResult = children
             })
     },
     
 });
 
 export const selectSearchingterms = (state) => state.searching.keyword;
-export const selectSearchingLoading = (state) => state.searching.isLoading;
-export const selectSearchingError = (state) => state.searching.hasError;
 
 export const { changeSearchingKeyword } = searchingSlice.actions;
 export default searchingSlice.reducer;

@@ -5,10 +5,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 //------------------------Import Internal Componenet ----------------------
 import searchingReducer from '../features/searching/searchSlice'
+import postReducer from '../features/post/postSlice'
 
 const store =configureStore({
     reducer:{
         searching:searchingReducer,
+        post:postReducer,
     }
 });
 

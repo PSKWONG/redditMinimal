@@ -1,0 +1,31 @@
+
+:root{
+    --maxMediaPlayerWidth:550px;
+}
+
+.mediawrapper{
+    --mediaWrapperSize:calc(80vh - var(--headerHeight));
+}
+.mediawrapper {
+    background-color: black;
+    max-height: var(--mediaWrapperSize);
+    overflow: hidden;
+    border-radius: 5px;
+}
+.videoPlayer{
+    max-height: var(--mediaWrapperSize);
+    max-width: var(--maxMediaPlayerWidth);
+}
+.thumbnailContainer {
+    display: block;
+    float: right;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.thumbnailContainer img{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}

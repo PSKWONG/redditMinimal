@@ -1,17 +1,67 @@
-.postWrapper{
+.postWrapper {
     width: 100%;
     min-height: calc(100vh - var(--headerHeight));
+    
+}
+
+.postList{
+    position: relative;
+    top: -100px;
     display: flex;
-    justify-content: center;   
-    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 0px;
+    justify-content: center;
+
+}
+
+.pageInfo {
+    background-color: #56494C;
+    padding: 10px;
+    margin-top:var(--headerHeight) ;
+    color: white;
+    font-weight: 500;
+    border: solid 2px #F4F1DE;
+    border-radius: 0px 10px 10px 0px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    position: sticky;
+    left: 0px;
+    top:calc(50% - var(--headerHeight) )
 }
 
 .poscontainer {
-    width: 60%;
-    min-height: 150px;
+    flex-basis: 60%;
+    min-height: 50px;
     margin-top: 15px;
     background-color: white;
-    border: solid 3px rgba(136,136,136, 0.93);
+    border: solid 1px rgba(136, 136, 136, 0.93);
     border-radius: 25px 25px 0px 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 30px;
 }
 
+.poscontainer:hover{
+    box-shadow: 0px 0px 15px #56494C;
+
+}
+
+.poscontainer h2{
+    text-align: left;
+    font-weight: 500;
+    color: #FF6542;
+}
+.poscontainer .extradata{
+    width: 100%;
+    margin-top: 5px;
+    border-top: 1px dashed #56494C;
+    color: #56494C;
+    text-align: left;
+    font-size: 0.85em;
+}
+
+.poscontainer .extradata .divider{
+    margin-right: 5px;
+    margin-left: 5px;
+    
+}
