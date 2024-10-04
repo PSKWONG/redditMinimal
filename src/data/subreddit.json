@@ -1,14 +1,16 @@
 {
-    "popular": {
-        "Name": "popular",
-        "icon": ""
-    },
-    "science": {
-        "Name": "science",
-        "icon": "https://styles.redditmedia.com/t5_mouw/styles/communityIcon_xtjipkhhefi41.png"
-    },
-    "jackskellington": {
-        "Name": "jackskellington",
-        "icon": "https://styles.redditmedia.com/t5_30g19/styles/communityIcon_523vfbuif4v31.jpg"
-    }
+    "data": [
+        {
+            "name": "popular",
+            "icon": ""
+        },
+        {
+            "name": "science",
+            "icon": "https://styles.redditmedia.com/t5_mouw/styles/communityIcon_xtjipkhhefi41.png"
+        },
+        {
+            "name": "jackskellington",
+            "icon": "https://styles.redditmedia.com/t5_30g19/styles/communityIcon_523vfbuif4v31.jpg"
+        }
+    ]
 }

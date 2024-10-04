@@ -1,14 +1,20 @@
 ////////////////////////////Importing//////////////////////
 
 //------------------------Import External Componenet ----------------------
+import { useDispatch } from 'react-redux';
 //------------------------Import Internal Componenet ----------------------
 import style from './post.module.css'
 import { VideoPlayer } from "../../component/mediaPlayer/videoPlayer";
 import { ThumbnailContainer } from "../../component/mediaPlayer/thumbnail";
+import { displayComment, fetchComment } from '../comment/commentSlice';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export function Post(props) {
-    const { title, media, over_18, is_video, author, created, num_comments, thumbnail } = props.data
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const { title, media, over_18, is_video, author, created, num_comments, thumbnail, permalink } = props.data
 
     const mediaInfo = {
         is_video,
@@ -21,7 +27,7 @@ export function Post(props) {
 
         let time = currentDate - created
 
-        console.log(time)
+
         if (time < 3600) {
             time = Math.ceil(time / 60);
             return `${time} min`;
@@ -38,13 +44,21 @@ export function Post(props) {
 
     }
 
+    const handlePostClick = (event)=>{
+        event.preventDefault();
+        dispatch(displayComment(timeCount())); 
+        dispatch(fetchComment(permalink));
+        navigate('/comment')
+
+    }
+
 
 
 
 
     if (over_18 === false) {
         return (
-            <div className={style.poscontainer}>
+            <div className={style.poscontainer} onClick={handlePostClick}>
                 <ThumbnailContainer mediaInfo={mediaInfo} />
                 <h2> {title} </h2>
 

@@ -13,7 +13,6 @@ export const fetchPages = createAsyncThunk(
         const response = await fetch(fetchURL);
         
         const json = await response.json();
-        console.log(json)
         return json.data; 
     }
 )
@@ -86,4 +85,5 @@ export const {
     selectPageError,
     selectPageInfo
 } = postSlice.selectors
+export const  {changePostList} = postSlice.actions
 
