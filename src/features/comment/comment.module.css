@@ -48,3 +48,34 @@
     margin-left: 5px;
     
 }
+
+.commentContainer .replyiesWrapper{
+    /* border-top: 1px dashed #56494C;*/
+    width: 95%;
+    text-align: left;
+}
+
+.commentContainer .replyiesWrapper .commentButton{
+    background-color: #56494C;
+    color: white;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 0.85em;
+}
+.commentContainer .replyiesWrapper .commentButton .commentLogo{
+    background-image: url(../../../public/media/image/inactiveReplyLogo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 15px;
+    margin-right: 10px;
+    display: inline-block;
+    
+}
+
+.commentContainer .replyiesWrapper .activeCommentButton{
+    /* border-top: 1px dashed #56494C;*/
+    width: 95%;
+}

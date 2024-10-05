@@ -23,13 +23,18 @@ const commentSlice = createSlice({
     name: 'comment',
     initialState: {
         pagePost: [],
+        replies:[],
         timeCreated:'',
         isLoading: false,
         hasError: false,
+        isRepliesLoading: false,
     },
     reducers: {
         displayComment:(state, action)=>{
             state.timeCreated = action.payload
+        },
+        addReplies:(state,action)=>{
+            state.replies.push(action.payload);
         }
     },
     extraReducers: (builder) => {
@@ -60,7 +65,7 @@ const commentSlice = createSlice({
 });
 
 export default commentSlice.reducer;
-export const  {displayComment} = commentSlice.actions
+export const  {displayComment, addReplies} = commentSlice.actions
 
 export const {
     selectCommentPost,
