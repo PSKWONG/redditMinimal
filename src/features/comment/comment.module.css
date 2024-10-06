@@ -34,6 +34,11 @@
     font-weight: 500;
     color: #FF6542;
 }
+
+.commentContainer .markdownWrapper{
+    text-align: left;
+    color: #56494C;
+}
 .commentContainer .extradata{
     width: 100%;
     margin-bottom: 5px;
@@ -53,6 +58,7 @@
     /* border-top: 1px dashed #56494C;*/
     width: 95%;
     text-align: left;
+    margin-top: 5px;
 }
 
 .commentContainer .replyiesWrapper .commentButton{
@@ -63,9 +69,10 @@
     padding: 5px 15px;
     cursor: pointer;
     font-size: 0.85em;
+    
 }
 .commentContainer .replyiesWrapper .commentButton .commentLogo{
-    background-image: url(../../../public/media/image/inactiveReplyLogo.png);
+    
     background-repeat: no-repeat;
     background-size: cover;
     width: 20px;
@@ -75,7 +82,17 @@
     
 }
 
+.commentContainer .replyiesWrapper .inactiveCommentButton .commentLogo {
+    background-image: url(../../../public/media/image/inactiveReplyLogo.png);
+}
+
 .commentContainer .replyiesWrapper .activeCommentButton{
     /* border-top: 1px dashed #56494C;*/
-    width: 95%;
+    background-color: white;
+    color: #56494C;
+    border: 1px solid #56494C;
+}
+
+.commentContainer .replyiesWrapper .activeCommentButton .commentLogo{
+    background-image: url(../../../public/media/image/activedReplyLogo.png);
 }

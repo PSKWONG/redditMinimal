@@ -1,0 +1,54 @@
+.replyWrapper{
+    background-color: rgba(86, 73, 76, 0.15);
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: left;
+    border: 1px solid rgba(86, 73, 76, 0.15);
+}
+.divider {
+    margin: 0px 5px;
+}
+.basicInfo{
+    font-size: 10px;
+}
+.replyContent {
+    background-color: rgba(86, 73, 76, 0.15);
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.buttonWrapper{
+    text-align: right;
+}
+
+.replyContent .replyBtn {
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.replyContent .inActiveReplyBtn{
+    background-color: rgba(86, 73, 76, 0.15);
+    color: white;
+    
+}
+
+.replyContent .activeReplyBtn{
+    background-color: transparent;
+    color: rgba(86, 73, 76, 0.35);
+    border: 1px solid rgba(86, 73, 76, 0.15);
+    
+}
+
+.replyBtnHidden{
+    visibility: hidden;
+}
+
+.replyBtnDisplay{
+    visibility:visible;
+}

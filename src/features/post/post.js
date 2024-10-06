@@ -8,6 +8,7 @@ import { VideoPlayer } from "../../component/mediaPlayer/videoPlayer";
 import { ThumbnailContainer } from "../../component/mediaPlayer/thumbnail";
 import { displayComment, fetchComment } from '../comment/commentSlice';
 import { useNavigate } from 'react-router-dom';
+import { timeCount } from '../../component/root/timeCount';
 
 
 
@@ -21,7 +22,7 @@ export function Post(props) {
         media,
         thumbnail
     }
-
+/*
     const timeCount = () => {
         let currentDate = Date.now() / 1000
 
@@ -43,10 +44,10 @@ export function Post(props) {
         }
 
     }
-
+        */
     const handlePostClick = (event)=>{
         event.preventDefault();
-        dispatch(displayComment(timeCount())); 
+        dispatch(displayComment(timeCount(created))); 
         dispatch(fetchComment(permalink));
         navigate('/comment')
 
@@ -66,7 +67,7 @@ export function Post(props) {
                 <div className={style.extradata}>
                     Posted by <strong> {author} </strong>
                     <span className={style.divider}> &#8226;</span>
-                    {timeCount()} ago
+                    {timeCount(created)} ago
                     <span className={style.divider}> &#8226;</span>
                     {num_comments} comment
 
