@@ -10,7 +10,8 @@ export function Root() {
     return (
         <div className="App">
             <HeaderComponent />
-            <Outlet />
+            <Outlet />  
+            
         </div>
     )
 }

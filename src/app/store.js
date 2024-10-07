@@ -2,18 +2,36 @@
 ////////////////////////////Importing//////////////////////
 
 //------------------------Import External Componenet ----------------------
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit'
 //------------------------Import Internal Componenet ----------------------
 import searchingReducer from '../features/searching/searchSlice'
-import postReducer from '../features/post/postSlice'
+import postReducer, { changePostList, fetchPages, selectPageInfo } from '../features/post/postSlice'
 import commentReducer from '../features/comment/commentSlice'
 
-const store =configureStore({
-    reducer:{
-        searching:searchingReducer,
-        post:postReducer,
-        comment:commentReducer,
+/////////////////////Middle Ware ///////////////////////////////
+const listenerMiddleware = createListenerMiddleware()
+
+/////////////////////Middle Ware 01  ///////////////////////////////
+
+listenerMiddleware.startListening({
+    actionCreator: changePostList,
+    effect: (action, listenerApi)=>{
+        const {pageName} = store.getState().post.pageInfo
+        listenerApi.dispatch (fetchPages(pageName))
     }
+})
+
+///////////////////// Create Store ///////////////////////////////
+
+const store = configureStore({
+    reducer: {
+        searching: searchingReducer,
+        post: postReducer,
+        comment: commentReducer,
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(listenerMiddleware.middleware),
 });
 
-export default store; 
+export default store;
+
+

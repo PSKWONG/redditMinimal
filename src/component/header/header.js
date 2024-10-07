@@ -19,19 +19,10 @@ export function HeaderComponent() {
     const navigate = useNavigate();
 
 
+
+
     const handleButtonClick =  (event) => {
-        try {
-            const retrievedKey = event.target.attributes.iconid.value;
-            const retrievedData = subreddit.data[retrievedKey]
-            dispatch(changePostList(retrievedData))
-            dispatch(fetchPages(retrievedData.name))
-            navigate('/')
-
-
-            console.log(subreddit.data[retrievedKey])
-        } catch (error) {
-            console.log(error);
-        }
+       
     }
 
 

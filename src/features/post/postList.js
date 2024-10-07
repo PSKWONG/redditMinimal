@@ -1,12 +1,12 @@
 ////////////////////////////Importing//////////////////////
 
 //------------------------Import External Componenet ----------------------
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 //------------------------Import Internal Componenet ----------------------
 import style from './post.module.css'
 import { Post } from "./post";
-import { selectPageLoading, selectPagePost } from "./postSlice";
+import { changePostList, selectPageLoading, selectPagePost } from "./postSlice";
 
 
 
@@ -14,6 +14,17 @@ export function PostList() {
 
     let pagePost = useSelector(selectPagePost);
     let LoadingStatus = useSelector(selectPageLoading);
+    let dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(changePostList(0))
+    },[])
+
+    
+    const trialonbtnaction =(event)=>{
+        const position = event.target.getAttribute('keyid')
+        dispatch(changePostList(position))
+    }
 
     if (LoadingStatus === true) {
         return(
@@ -23,7 +34,9 @@ export function PostList() {
         )
     } else if (pagePost.length !== 0) {
         return (
+            
             <div className={style.postList}>
+                <div onClick={trialonbtnaction} keyid = {2} >Poisiton 1 </div>
                 {
                     pagePost.map((post) => {
                         const data = post.data;
@@ -36,3 +49,6 @@ export function PostList() {
     }
 
 }
+
+//
+//<div onClick={trialonbtnaction(2)}>Poisiton 2</div>

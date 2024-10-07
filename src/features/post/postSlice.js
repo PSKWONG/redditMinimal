@@ -5,6 +5,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 //------------------------Import Internal Componenet ----------------------
 import { fetchPostbyTerm } from "../searching/searchSlice";
+import subRedditPageData from "../../data/subreddit.json"
 
 export const fetchPages = createAsyncThunk(
     'post/fetchPages',
@@ -26,13 +27,15 @@ const postSlice = createSlice({
             pageName: 'popular',
             pageIcon: '',
         },
+        dataIndex:0,
         pagePost: [],
         isLoading: false,
         hasError: false,
     },
     reducers: {
         changePostList: (state, action) => {
-            const { name, icon } = action.payload;
+            state.dataIndex = action.payload
+            const { name, icon } = subRedditPageData.data[state.dataIndex];
             state.pageInfo.pageName = name;
             state.pageInfo.pageIcon = icon;
             fetchPages(name);
