@@ -9,6 +9,7 @@ import { SearchingComponenet } from "../../features/searching/search";
 import subreddit from '../../data/subreddit.json'
 import { changePostList, fetchPages } from "../../features/post/postSlice";
 import { useNavigate } from "react-router-dom";
+import {SubRedditIcon} from "./headerIcon"
 
 
 
@@ -17,6 +18,7 @@ export function HeaderComponent() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const iconList = subreddit.data
 
 
 
@@ -34,7 +36,13 @@ export function HeaderComponent() {
             <SearchingComponenet className={headerStyle.searchingWrapper} />
             <div className={headerStyle.redditSliderWrapper}>
                 <img src="./media/image/arrowleft.png" className={headerStyle.arrowBtn} />
-                <div>test</div>
+                <div className={headerStyle.iconWrapper} >
+                    {
+                        iconList.map((item, index)=>{
+                            return < SubRedditIcon position={index}  />
+                        })
+                    }
+                </div>
                 <img src="./media/image/arrowright.png" className={headerStyle.arrowBtn} />
             </div>
         </div>

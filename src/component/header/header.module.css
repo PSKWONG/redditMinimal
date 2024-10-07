@@ -60,3 +60,22 @@
 .arrowBtn{
     height: 40px;
 }
+
+.iconWrapper{
+    display: flex;
+    align-items: center;
+}
+
+.iconWrapper .iconItem{
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.iconWrapper img{
+    height:30px;
+    border-radius: 100%;
+    margin-left: 30px;
+    margin-right: 5px;
+}
