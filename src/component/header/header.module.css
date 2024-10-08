@@ -65,30 +65,40 @@
     display: flex;
     align-items: center;
 }
-
-.iconWrapper{
-    color: white;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    
-}
-
-.iconWrapper img{
+.iconList img {
     height:30px;
     border-radius: 100%;
     margin-left: 30px;
     margin-right: 5px;
 }
 
+.iconList span{
+    color: white;
+}
+
+.iconList img, .iconList span {
+    /*transition: display 1s;*/
+}
+
+
+
+.iconWrapper{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+
 .iconWrapper img, .iconWrapper span{
-    visibility: visible;
-    transition: visibility 1s;
+    display:inline-block;
 }
 
 .inactiveIconWrapper img,.inactiveIconWrapper span{
-    visibility:hidden;
-    transition: visibility 1s;
+    display:none;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 

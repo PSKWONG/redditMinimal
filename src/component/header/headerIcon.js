@@ -5,6 +5,7 @@ import subreddit from '../../data/subreddit.json'
 import style from "./header.module.css"
 import { useDispatch } from "react-redux"
 import { changePostList } from "../../features/post/postSlice"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -12,26 +13,29 @@ import { changePostList } from "../../features/post/postSlice"
 export function SubRedditIcon(props){
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-    const [iconVisibility, setIconVisibility] = useState(props.visibility)
     const [iconStyle, setIconStyle] = useState(`${style.iconWrapper}`)
 
-    const {icon, name} = subreddit.data[props.position]
+    
+    const {position, visibility} = props
+    const {icon, name} = subreddit.data[position]
 
-    console.log(props.visibility)
 
     useEffect(()=>{
-        if(iconVisibility === true){
+        
+        if(visibility === true){
             setIconStyle(`${style.iconWrapper}`)
-        }else if(iconVisibility === false){
+        }else if(visibility === false){
             setIconStyle(`${style.inactiveIconWrapper}`)
         }
 
-    },[iconVisibility])
+    },[visibility])
 
    
     const handleOnClick=()=>{
-        dispatch(changePostList(props.position))
+        dispatch(changePostList(position));
+        navigate("/")
     }
 
 

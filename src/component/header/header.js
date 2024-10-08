@@ -2,13 +2,10 @@
 
 //------------------------Import External Componenet ----------------------
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 //------------------------Import Internal Componenet ----------------------
 import headerStyle from './header.module.css'
 import { SearchingComponenet } from "../../features/searching/search";
 import subreddit from '../../data/subreddit.json'
-import { changePostList, fetchPages } from "../../features/post/postSlice";
-import { useNavigate } from "react-router-dom";
 import { SubRedditIcon } from "./headerIcon"
 
 
@@ -16,28 +13,48 @@ import { SubRedditIcon } from "./headerIcon"
 
 export function HeaderComponent() {
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const [iconVisibilityList, setIconVisibilityList] = useState([])
+    const iconListLength= subreddit.data.length
 
-    const iconList = subreddit.data
+    const [iconVisibilityList, setIconVisibilityList] = useState([])
+    const [styleOfLeftArrowButton, setStyleOfLeftArrowButton] =useState(`${headerStyle.arrowBtn}`)
+    const [refresh ,setRefresh] =useState(false)
+
+    const countSpecificItem = (term)=>{
+        return iconVisibilityList.filter(visibility => visibility = term).length
+    }
+
 
 
     useEffect(()=>{
-        const target = iconList.length
-        
-        
+        const target = iconListLength
         const current = iconVisibilityList.length
-        console.log(target,current, "visibility")
-        for(let i = 0 ; i<target; i++){
-            setIconVisibilityList((prev)=>{
-                return [...prev, true]
-            })
-        }
+        if(current < target){
+            setIconVisibilityList((prev)=>[...prev, true])
+        } 
+    },[iconVisibilityList])
 
-    },[])
+  
+
+    const handleLeftArrow = ()=>{
+        const indexToChange = iconVisibilityList.indexOf(true);
+        let newIconVisibilityList = iconVisibilityList;
+        newIconVisibilityList[indexToChange]= false;
+        
+        setIconVisibilityList( newIconVisibilityList );
+        setRefresh(!refresh)
+    }
+
+    const handleRightArrow = ()=>{
+        const indexToChange = iconVisibilityList.lastIndexOf(false);
+        let newIconVisibilityList = iconVisibilityList;
+        newIconVisibilityList[indexToChange]= true;
+        
+        setIconVisibilityList( newIconVisibilityList );
+        setRefresh(!refresh)
+    }
 
 
+    
 
 
     return (
@@ -47,15 +64,15 @@ export function HeaderComponent() {
             </div>
             <SearchingComponenet className={headerStyle.searchingWrapper} />
             <div className={headerStyle.redditSliderWrapper}>
-                <img src="./media/image/arrowleft.png" className={headerStyle.arrowBtn} />
+                <img src="./media/image/arrowleft.png" className={styleOfLeftArrowButton} onClick={handleLeftArrow} />
                 <div className={headerStyle.iconList} >
                     {
-                        iconList.map((item, index) => {
-                            return < SubRedditIcon position={index} visibility={iconVisibilityList[index]} />
+                        iconVisibilityList.map((item, index) => {
+                            return < SubRedditIcon key={index} position={index} visibility={item} refresh={refresh} />
                         })
                     }
                 </div>
-                <img src="./media/image/arrowright.png" className={headerStyle.arrowBtn} />
+                <img src="./media/image/arrowright.png" className={headerStyle.arrowBtn} onClick={handleRightArrow} />
             </div>
         </div>
     )
