@@ -61,16 +61,17 @@
     height: 40px;
 }
 
-.iconWrapper{
+.iconList{
     display: flex;
     align-items: center;
 }
 
-.iconWrapper .iconItem{
+.iconWrapper{
     color: white;
     display: flex;
     align-items: center;
     cursor: pointer;
+    
 }
 
 .iconWrapper img{
@@ -79,3 +80,15 @@
     margin-left: 30px;
     margin-right: 5px;
 }
+
+.iconWrapper img, .iconWrapper span{
+    visibility: visible;
+    transition: visibility 1s;
+}
+
+.inactiveIconWrapper img,.inactiveIconWrapper span{
+    visibility:hidden;
+    transition: visibility 1s;
+}
+
+
