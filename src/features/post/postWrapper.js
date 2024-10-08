@@ -21,8 +21,8 @@ export function PostWrapper(){
     return (
         <div className={style.postWrapper}>
             <div className={style.pageInfo}>
+                <img src={pageIcon} alt={pageName} />
                 {pageName}
-                {pageIcon}
             </div>
             <PostList />
 

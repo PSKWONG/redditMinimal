@@ -5,8 +5,6 @@
 }
 
 .postList{
-    position: relative;
-    top: -100px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 0px;
@@ -24,9 +22,15 @@
     border-radius: 0px 10px 10px 0px;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    position: sticky;
+    position: fixed;
     left: 0px;
     top:calc(50% - var(--headerHeight) )
+}
+
+.pageInfo img{
+    border-radius: 100%;
+    width: 20px;
+    margin-bottom: 10px;
 }
 
 .poscontainer {

@@ -20,12 +20,6 @@ export function PostList() {
         dispatch(changePostList(0))
     },[])
 
-    
-    const trialonbtnaction =(event)=>{
-        const position = event.target.getAttribute('keyid')
-        dispatch(changePostList(position))
-    }
-
     if (LoadingStatus === true) {
         return(
             <div>
@@ -36,7 +30,6 @@ export function PostList() {
         return (
             
             <div className={style.postList}>
-                <div onClick={trialonbtnaction} keyid = {2} >Poisiton 1 </div>
                 {
                     pagePost.map((post) => {
                         const data = post.data;
@@ -50,5 +43,3 @@ export function PostList() {
 
 }
 
-//
-//<div onClick={trialonbtnaction(2)}>Poisiton 2</div>

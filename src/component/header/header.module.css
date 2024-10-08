@@ -64,6 +64,8 @@
 .iconList{
     display: flex;
     align-items: center;
+    width: 100%;
+    overflow: hidden;
 }
 .iconList img {
     height:30px;
@@ -76,16 +78,13 @@
     color: white;
 }
 
-.iconList img, .iconList span {
-    /*transition: display 1s;*/
-}
-
-
 
 .iconWrapper{
+    
     display: flex;
     align-items: center;
     cursor: pointer;
+    
 }
 
 
