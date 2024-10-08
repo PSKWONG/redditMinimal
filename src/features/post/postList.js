@@ -18,7 +18,7 @@ export function PostList() {
 
     useEffect(()=>{
         dispatch(changePostList(0))
-    },[])
+    },[dispatch])
 
     if (LoadingStatus === true) {
         return(

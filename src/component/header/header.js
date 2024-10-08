@@ -16,14 +16,15 @@ export function HeaderComponent() {
     const iconListLength= subreddit.data.length
 
     const [iconVisibilityList, setIconVisibilityList] = useState([])
-    const [styleOfLeftArrowButton, setStyleOfLeftArrowButton] =useState(`${headerStyle.arrowBtn}`)
+    const [styleOfLeftArrowButton] =useState(`${headerStyle.arrowBtn}`)
     const [refresh ,setRefresh] =useState(false)
 
+    /*
     const countSpecificItem = (term)=>{
         return iconVisibilityList.filter(visibility => visibility = term).length
     }
 
-
+*/
 
     useEffect(()=>{
         const target = iconListLength
@@ -31,7 +32,7 @@ export function HeaderComponent() {
         if(current < target){
             setIconVisibilityList((prev)=>[...prev, true])
         } 
-    },[iconVisibilityList])
+    },[iconVisibilityList,iconListLength])
 
   
 
@@ -64,7 +65,7 @@ export function HeaderComponent() {
             </div>
             <SearchingComponenet className={headerStyle.searchingWrapper} />
             <div className={headerStyle.redditSliderWrapper}>
-                <img src="./media/image/arrowleft.png" className={styleOfLeftArrowButton} onClick={handleLeftArrow} />
+                <img src="./media/image/arrowleft.png" className={styleOfLeftArrowButton} onClick={handleLeftArrow} alt="Moving Left"/>
                 <div className={headerStyle.iconList} >
                     {
                         iconVisibilityList.map((item, index) => {
@@ -72,7 +73,7 @@ export function HeaderComponent() {
                         })
                     }
                 </div>
-                <img src="./media/image/arrowright.png" className={headerStyle.arrowBtn} onClick={handleRightArrow} />
+                <img src="./media/image/arrowright.png" className={headerStyle.arrowBtn} onClick={handleRightArrow} alt="Moving Right" />
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 
 form{
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-left: 15px;
 }
@@ -18,8 +19,11 @@ form{
 }
 
 .inputTextBox {
+    max-width: 50vw;
+    line-height: 1.85em;
     padding: 5px;
-    border-radius: 3px;
+    padding-left: 20px;
+    border-radius: 25px;
     outline: none;
     outline-color: transparent;
     outline-width: 0px;
