@@ -6,6 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #F2CD91;
+  background-image: url(../public/media/image/backgroundSquare.png);
+  background-repeat: repeat;
+  background-size:5vh;
 }
 
 code {

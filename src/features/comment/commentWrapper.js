@@ -1,7 +1,7 @@
 ////////////////////////////Importing//////////////////////
 
 //------------------------Import External Componenet ----------------------
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ReactMarkdown from 'react-markdown';
 //------------------------Import Internal Componenet ----------------------
@@ -10,16 +10,26 @@ import { VideoPlayer } from "../../component/mediaPlayer/videoPlayer";
 import { selectCommentLoading, selectCommentPost, selectPostTimeCreated } from "./commentSlice";
 import { GalleryContainer } from "../../component/mediaPlayer/gallery";
 import { RepliesWrapper } from "../../component/reply/replyWrapper";
+import { useNavigate } from "react-router-dom";
 //import { HTMLConvertor } from "./htmlTextDisplayer";
 
 
 export function CommentWrapper() {
 
+    
     const fetchData = useSelector(selectCommentPost)
     const LoadingStatus = useSelector(selectCommentLoading);
     const TimeCreated = useSelector(selectPostTimeCreated)
     const [repliesDisplay, setRepliesDisplay] = useState(false); 
     const [replyButtonStyle, setReplyButtonStyle] = useState(`${style.commentButton} ${style.inactiveCommentButton}`); 
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if (fetchData.length === 0 && LoadingStatus === false){
+            navigate("/")
+        }
+
+    },[fetchData.length, LoadingStatus])
 
     if (LoadingStatus === true) {
         return (
@@ -85,6 +95,5 @@ export function CommentWrapper() {
             </div>
         )
     }
-
 
 }
