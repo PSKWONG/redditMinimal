@@ -29,7 +29,7 @@ export function CommentWrapper() {
             navigate("/")
         }
 
-    },[fetchData.length, LoadingStatus])
+    },[fetchData.length, LoadingStatus, navigate])
 
     if (LoadingStatus === true) {
         return (

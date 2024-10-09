@@ -14,10 +14,10 @@ export function RepliesWrapper(props) {
     const { id, numReplies, repliesData, display, displayLv } = props.replyWrapperInfo
 
     //const [replyListLength, setReplyListLength] = useState(numReplies);
-    const [nextDisplayLv, setNextDisplayLv] = useState(displayLv + 1)
-    const [newWrapperkeyID, setKeyID] = useState(`${id}&&${nextDisplayLv}}%%${generateString(6)}`);
+    const [nextDisplayLv] = useState(displayLv + 1)
+    const [newWrapperkeyID] = useState(`${id}&&${nextDisplayLv}}%%${generateString(6)}`);
 
-    const [indexInterval, setIndexInterval] = useState(50)
+    const [indexInterval] = useState(50)
     const [endIndex, setEndIndex] = useState(indexInterval)
     const [loadMoreBtn, setLoadMoreBtn] = useState(false)
     const [loadMoreBtnStyle, setLoadMoreBtnStyle] = useState(`${style.replyBtnHidden}`)
@@ -29,7 +29,7 @@ export function RepliesWrapper(props) {
         } else {
             setLoadMoreBtn(true)
         }
-    }, [display])
+    }, [display, indexInterval, numReplies])
 
     useEffect(() => {
         if (loadMoreBtn === true) {
@@ -65,6 +65,8 @@ export function RepliesWrapper(props) {
                                 replyData: data,
                             }
                             return < ReplyComponent key={`${newWrapperkeyID}&&${index}`} replyContainerInfo={replyContainerInfo} />
+                        }else{
+                            return <></>
                         }
                     })
                 }

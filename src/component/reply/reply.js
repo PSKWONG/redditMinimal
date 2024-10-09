@@ -11,10 +11,10 @@ import { generateString } from "../root/randomCharGenerator";
 
 export function ReplyComponent(props) {
 
-    const{displayLv,replyData } = props.replyContainerInfo;
+    const { displayLv, replyData } = props.replyContainerInfo;
     const { author, created, body, replies, id } = replyData;
-    const [nextDisplayLv, setNextDisplayLv] = useState(displayLv + 1)
-    const [newWrapperkeyID, setKeyID] = useState(`${id}&&${nextDisplayLv}}%%${generateString(6)}`);
+    const [nextDisplayLv] = useState(displayLv + 1)
+    const [newWrapperkeyID] = useState(`${id}&&${nextDisplayLv}}%%${generateString(6)}`);
 
 
     const [replyBtnDisplay, setReplyBtnDisplay] = useState("")
@@ -22,25 +22,27 @@ export function ReplyComponent(props) {
     const [repliesCount, setRepliesCount] = useState(0);
     const [repliesData, setRepliesdata] = useState("");
 
-    const realRepliesCount = ()=>{
-        const lastIndexToCheck = replies.data.children.length - 1 
-        const lastIndexItemType = replies.data.children[lastIndexToCheck].kind
-        if(lastIndexItemType==="more"){
-            return lastIndexToCheck
-        }else{
-            return replies.data.children.length
-        }
-    }
 
 
     useEffect(() => {
 
-        if (replies !== "" && realRepliesCount() !== 0 ) {
+
+        const realRepliesCount = () => {
+            const lastIndexToCheck = replies.data.children.length - 1
+            const lastIndexItemType = replies.data.children[lastIndexToCheck].kind
+            if (lastIndexItemType === "more") {
+                return lastIndexToCheck
+            } else {
+                return replies.data.children.length
+            }
+        }
+
+        if (replies !== "" && realRepliesCount() !== 0) {
             setRepliesCount(realRepliesCount())
             setReplyBtnDisplay(false)
             setRepliesdata(replies.data)
         }
-    }, [])
+    }, [replies])
 
     useEffect(() => {
         if (replyBtnDisplay === false) {
@@ -66,7 +68,7 @@ export function ReplyComponent(props) {
         numReplies: repliesCount,
         repliesData: repliesData,
         display: replyBtnDisplay,
-        displayLv: nextDisplayLv, 
+        displayLv: nextDisplayLv,
     }
     return (
 
@@ -81,7 +83,7 @@ export function ReplyComponent(props) {
                     <div className={style.buttonWrapper} >
                         <span className={replyBtnStyle} onClick={handleReplyBtnClick}>{repliesCount} Replies</span>
                     </div>
-                    < RepliesWrapper key={newWrapperkeyID} replyWrapperInfo = {replyWrapperInfo} />
+                    < RepliesWrapper key={newWrapperkeyID} replyWrapperInfo={replyWrapperInfo} />
 
                 </div>
 

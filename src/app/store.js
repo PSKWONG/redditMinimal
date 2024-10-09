@@ -5,7 +5,7 @@
 import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit'
 //------------------------Import Internal Componenet ----------------------
 import searchingReducer from '../features/searching/searchSlice'
-import postReducer, { changePostList, fetchPages, selectPageInfo } from '../features/post/postSlice'
+import postReducer, { changePostList, fetchPages } from '../features/post/postSlice'
 import commentReducer from '../features/comment/commentSlice'
 
 /////////////////////Middle Ware ///////////////////////////////
