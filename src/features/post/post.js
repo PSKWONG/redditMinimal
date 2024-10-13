@@ -34,8 +34,9 @@ export function Post(props) {
     if (over_18 === false) {
         return (
             <div className={style.poscontainer} onClick={handlePostClick}>
-                <ThumbnailContainer mediaInfo={mediaInfo} />
+                
                 <h2> {title} </h2>
+                <ThumbnailContainer mediaInfo={mediaInfo} />
 
                 <VideoPlayer mediaInfo={mediaInfo} />
                 <div className={style.extradata}>

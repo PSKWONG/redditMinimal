@@ -17,17 +17,13 @@
     max-width: var(--maxMediaPlayerWidth);
 }
 .thumbnailContainer {
-    display: block;
-    float: right;
-    margin-top: 20px;
-    margin-left: 10px;
-    border-radius: 100%;
     overflow: hidden;
 }
 .thumbnailContainer img{
     height: 100%;
     margin: 0px;
     padding: 0px;
+    border-radius: 100%;
 }
 
 .imgContainer{
@@ -35,3 +31,25 @@
     max-height: 70vh;
     border-radius: 5px;
 }
+
+@media only screen and (max-width: 450px){
+    
+:root{
+    --maxMediaPlayerWidth:80vw;
+}
+
+}
+
+@media only screen and (min-width: 1024px){
+    
+    .thumbnailContainer {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .thumbnailContainer img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+    
+    }

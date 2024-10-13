@@ -44,6 +44,7 @@
     padding-right: 10px;
     padding-bottom: 30px;
     cursor: pointer;
+    position: relative;
 }
 
 .poscontainer:hover{
@@ -69,4 +70,10 @@
     margin-right: 5px;
     margin-left: 5px;
     
+}
+
+@media only screen and (min-width: 1024px){
+    .poscontainer h2{
+        margin-right: 100px;
+    }
 }

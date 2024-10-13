@@ -30,3 +30,10 @@ form{
     border: 1px solid #847E89;
     color: #847E89;
 }
+
+@media only screen and (max-width: 450px){
+    .inputTextBox {
+        max-width: 25vw;
+
+    } 
+}
