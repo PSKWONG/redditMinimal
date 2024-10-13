@@ -37,7 +37,6 @@
     line-height: 70px;
     min-width: 70px;
     display: inline-flexbox;
-    cursor: pointer;
     grid-area: icon ;
 }
 .searchingWrapper{

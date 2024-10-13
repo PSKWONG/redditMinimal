@@ -9,6 +9,7 @@ import { ThumbnailContainer } from "../../component/mediaPlayer/thumbnail";
 import { displayComment, fetchComment } from '../comment/commentSlice';
 import { useNavigate } from 'react-router-dom';
 import { timeCount } from '../../component/root/timeCount';
+import { useEffect } from 'react';
 
 
 
@@ -30,6 +31,9 @@ export function Post(props) {
         navigate('/comment')
 
     }
+    useEffect(()=>{
+        navigate("/")
+    },[])
 
     if (over_18 === false) {
         return (
@@ -50,12 +54,6 @@ export function Post(props) {
             </div>
         );
     } else {
-        return (
-            <div>
-                {
-                    navigate("/")
-                }
-            </div>
-        )
+        return <></>
     }
 }
